@@ -5,10 +5,8 @@
 <ul>
 {% for route in routes %}
   <li>
-    <a href="/routes/{{ route.route_id }}">
-      {{ route.route }}
-    </a>
-  </li>>
+    <a href="/routes/{{ route.route_id }}">{{ route.route }}</a> 
+  </li>
 {% endfor %}
 </ul>
 {% endblock %}
