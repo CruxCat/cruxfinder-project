@@ -19,6 +19,12 @@ def homepage():
 
     return render_template('homepage.html')
 
+@app.route('/login')
+def login():
+    """View login page."""
+
+    return render_template('login.html')
+
 @app.route('/routes')
 def all_routes():
     """View all routes."""
