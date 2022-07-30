@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}All Routes{% endblock %}
+
+{% block body %}
+<ul>
+{% for route in routes %}
+  <li>
+    <a href="/routes/{{ route.route_id }}">
+      {{ route.route }}
+    </a>
+  </li>>
+{% endfor %}
+</ul>
+{% endblock %}

@@ -1,0 +1,37 @@
+[
+    {
+        "route": "A Peaceful Transition",
+        "grade": "5.8",
+        "latitude": "-117.28617",
+        "longitude": "47.57852",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "Humpty Dumpty",
+        "grade": "5.6",
+        "latitude": "-117.41954",
+        "longitude": "-47.64739",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "The Little Engine That Could",
+        "grade": "5.7",
+        "latitude": "-117.41954",
+        "longitude": "-47.64739",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "Wallflower",
+        "grade": "5.8",
+        "latitude": "-116.962860",
+        "longitude": "47.701040",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "The Last of the Summer Wine",
+        "grade": "5.7",
+        "latitude": "-116.963130",
+        "longitude": "47.703930",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    }
+]

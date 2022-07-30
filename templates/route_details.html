@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ route.route }} - Details{% endblock %}
+
+{% block body %}
+<h1>{{ route.route }}</h1>
+
+<p>
+  {{ route.grade }}
+</p>
+
+<img src="{{ route.picture_path }}">
+{% endblock %}
