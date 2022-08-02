@@ -18,9 +18,7 @@ model.db.create_all()
 # load climbing route data from JSON file
 with open('data/climbs.json') as f:
     climbs_data = json.loads(f.read())
-
-# create routes, store them in list so we can use them
-# to create fake ratings later?
+    
 
 routes_in_db = []
 for climb in climbs_data:

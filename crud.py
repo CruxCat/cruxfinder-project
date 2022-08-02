@@ -5,9 +5,19 @@ from model import db, Climber, Route, Review, Rating, connect_to_db
 def create_climber(name, email, password):
     """Create and return a new user."""
 
-    climber = Climber(name=name, email=email, password=password)
+    climber = Climber(name = name, email=email, password=password)
 
     return climber
+
+def get_climber_by_id(climber_id):
+    """Return a climber by primary key."""
+
+    return Climber.query.get(climber_id)
+
+def get_climber_by_email(email):
+    """Return a climber by email."""
+
+    return Climber.query.filter(Climber.email == email).first()
 
 def create_route(route, grade, latitude, longitude, picture_path):
     """Create and return a new route."""
