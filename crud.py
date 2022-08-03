@@ -48,6 +48,14 @@ def create_rating(climber, route, stars):
 
     rating = Rating(climber=climber, route=route, stars=stars)
 
+    return rating
+
+def update_rating(rating_id, new_stars):
+    """Update a rating given rating_id and the updated stars."""
+
+    rating = Rating.query.get(rating_id)
+    rating.stars = new_stars
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)

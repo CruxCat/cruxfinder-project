@@ -51,12 +51,12 @@ def register_climber():
 
     climber = crud.get_climber_by_email(email)
     if climber:
-        flash("Cannot create an account with that email. That email is already registered.")
+        flash("That email is already taken. Try logging in below.")
     else:
         climber = crud.create_climber(name, email, password)
         db.session.add(climber)
         db.session.commit()
-        flash("Account created successfully. Please log in.")
+        flash("Account created successfully. Please log in below.")
 
     return redirect('/')
 
@@ -76,6 +76,29 @@ def login_climber():
         flash(f"Logged in! Welcome back, {climber.name}!")
 
     return redirect('/')
+
+@app.route("/routes/<route_id>/ratings", methods=["POST"])
+def create_rating(route_id):
+    """Create a new rating for a climbing route."""
+
+    logged_in_email = session.get("climber_email")
+    rating_score = request.form.get("rating")
+
+    if logged_in_email is None:
+        flash("You must log in to rate a movie.")
+    elif not rating_score:
+        flash("Error: you didn't select a score for your rating.")
+    else:
+        climber = crud.get_climber_by_email(logged_in_email)
+        route = crud.get_route_by_id(route_id)
+
+        rating = crud.create_rating(climber, route, int(rating_score))
+        db.session.add(rating)
+        db.session.commit()
+
+        flash(f"You rated this climb {rating_score} out of 5.")
+
+    return redirect(f"/routes/{route_id}")
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
