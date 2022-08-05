@@ -85,7 +85,7 @@ def create_rating(route_id):
     rating_score = request.form.get("rating")
 
     if logged_in_email is None:
-        flash("You must log in to rate a movie.")
+        flash("You must log in to rate a climbing route.")
     elif not rating_score:
         flash("Error: you didn't select a score for your rating.")
     else:
@@ -97,6 +97,32 @@ def create_rating(route_id):
         db.session.commit()
 
         flash(f"You rated this climb {rating_score} out of 5.")
+
+    return redirect(f"/routes/{route_id}")
+
+@app.route("/routes/<route_id>/reviews", methods=["POST"])
+def create_review(route_id):
+    """Create a new review for the specified route."""
+
+    logged_in_email = session.get("climber_email")
+    content = request.form.get("review")
+    date = request.form.get("date")
+
+    if logged_in_email is None:
+        flash("You must log in to review a climbing route.")
+    elif not date:
+        flash("Error: you must enter a date you climbed the route.")
+    elif content == "":
+        flash("Error: you must write something.")
+    else:
+        climber = crud.get_climber_by_email(logged_in_email)
+        route = crud.get_route_by_id(route_id)
+
+        review = crud.create_review(route, climber, date, content)
+        db.session.add(review)
+        db.session.commit()
+
+        flash(f"Thanks for your review of this climb!")
 
     return redirect(f"/routes/{route_id}")
 

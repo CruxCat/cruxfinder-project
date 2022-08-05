@@ -44,7 +44,7 @@ class Review(db.Model):
     review_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     route_id = db.Column(db.Integer, db.ForeignKey("routes.route_id"))
     climber_id = db.Column(db.Integer, db.ForeignKey("climbers.climber_id"))
-    date = db.Column(db.DateTime)
+    date = db.Column(db.Date)
     content = db.Column(db.Text)
 
     route = db.relationship("Route", backref="reviews")

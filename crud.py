@@ -36,10 +36,10 @@ def get_route_by_id(route_id):
 
     return Route.query.get(route_id)
 
-def create_review(climber, date, content):
+def create_review(route, climber, date, content):
     """Create and return a new review."""
 
-    review = Review(climber=climber, date=date, content=content)
+    review = Review(route=route, climber=climber, date=date, content=content)
 
     return review
 
