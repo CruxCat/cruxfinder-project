@@ -25,6 +25,12 @@ def login():
 
     return render_template('login.html')
 
+@app.route('/climber_profile')
+def climber_profile():
+    """View climber profile page."""
+
+    return render_template('climber_profile.html')
+
 @app.route('/routes')
 def all_routes():
     """View all routes."""
