@@ -14,7 +14,7 @@
 </p>
 
 {% if session.get('climber_email') %}
-<h2>Rate this climb!</h2>
+<h2>Rate this climb:</h2>
 <form action="/routes/{{ route.route_id }}/ratings" method="POST">
   <p>
     Rating: 
@@ -32,17 +32,16 @@
 {% endif %}
 
 {% if session.get('climber_email') %}
-<h2>Review this climb!</h2>
+<h2>Review this climb:</h2>
 <form action="/routes/{{ route.route_id }}/reviews" method="POST">
   <label for="date">Date you climbed the route:</label>
-
-  <input type="date" id="date" name="date"> <br><br>
+  <br>
+  <input type="date" id="date" name="date"> 
+  <br>
   <label for="review">Tell us how your climb went:</label>
   <br>
-  <textarea id="review" name="review" rows="4" cols="50">
-  </textarea> <br><br>
+  <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
   <button type="submit">Submit</button>
-
 </form>
 
 {% endif %}

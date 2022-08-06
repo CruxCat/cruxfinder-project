@@ -112,8 +112,6 @@ def create_review(route_id):
         flash("You must log in to review a climbing route.")
     elif not date:
         flash("Error: you must enter a date you climbed the route.")
-    elif content == "":
-        flash("Error: you must write something.")
     else:
         climber = crud.get_climber_by_email(logged_in_email)
         route = crud.get_route_by_id(route_id)
