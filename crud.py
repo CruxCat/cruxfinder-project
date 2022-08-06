@@ -2,10 +2,10 @@
 
 from model import db, Climber, Route, Review, Rating, connect_to_db
 
-def create_climber(name, email, password):
+def create_climber(name, location, goals, email, password):
     """Create and return a new user."""
 
-    climber = Climber(name = name, email=email, password=password)
+    climber = Climber(name = name, location = location, goals = goals, email = email, password = password)
 
     return climber
 

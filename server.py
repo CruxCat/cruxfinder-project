@@ -25,11 +25,13 @@ def login():
 
     return render_template('login.html')
 
-@app.route('/climber_profile')
-def climber_profile():
-    """View climber profile page."""
+# @app.route('/climber_profile/<climber_id>')
+# def climber_profile(climber_id):
+#     """Show climber profile page."""
 
-    return render_template('climber_profile.html')
+#     climber = crud.get_climber_by_id(climber_id)
+#     print(climber)
+#     return render_template('climber_profile.html', climber=climber)
 
 @app.route('/routes')
 def all_routes():
@@ -52,6 +54,8 @@ def register_climber():
     """Create a new climber."""
 
     name = request.form.get("name")
+    location = request.form.get("location")
+    goals = request.form.get("goals")
     email = request.form.get("email")
     password = request.form.get("password")
 
@@ -59,7 +63,7 @@ def register_climber():
     if climber:
         flash("That email is already taken. Try logging in below.")
     else:
-        climber = crud.create_climber(name, email, password)
+        climber = crud.create_climber(name, location, goals, email, password)
         db.session.add(climber)
         db.session.commit()
         flash("Account created successfully. Please log in below.")
@@ -74,6 +78,7 @@ def login_climber():
     password = request.form.get("password")
 
     climber = crud.get_climber_by_email(email)
+    
     if not climber or climber.password != password:
         flash("The email or password you entered was incorrect. Please try again.")
     else:
