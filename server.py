@@ -25,13 +25,13 @@ def login():
 
     return render_template('login.html')
 
-# @app.route('/climber_profile/<climber_id>')
-# def climber_profile(climber_id):
-#     """Show climber profile page."""
+@app.route('/climber_profile/<climber_id>')
+def climber_profile(climber_id):
+    """Show climber profile page."""
 
-#     climber = crud.get_climber_by_id(climber_id)
-#     print(climber)
-#     return render_template('climber_profile.html', climber=climber)
+    climber = crud.get_climber_by_id(climber_id)
+    print(climber)
+    return render_template('climber_profile.html', climber=climber)
 
 @app.route('/routes')
 def all_routes():
@@ -78,12 +78,13 @@ def login_climber():
     password = request.form.get("password")
 
     climber = crud.get_climber_by_email(email)
-    
+
     if not climber or climber.password != password:
         flash("The email or password you entered was incorrect. Please try again.")
     else:
         # Log in user by storing the user's email in session
         session["climber_email"] = climber.email
+        session["climber_id"] = climber.climber_id
         flash(f"Logged in! Welcome back, {climber.name}!")
 
     return redirect('/')

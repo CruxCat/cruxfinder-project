@@ -13,7 +13,7 @@
 {% if session.get('climber_email') %}
 <ul>
   <li>
-<a href="/climber_profile">Go to your profile</a>
+<a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a>
   </li>
 </ul>
 {% endif %}
