@@ -44,9 +44,13 @@ def create_review(route, climber, date, content):
     return review
 
 def get_reviews_by_route_id(route_id):
-    """Get all the reviews by route id."""
+    """Get all the review content for a given route by route id."""
 
-    return Review.query.filter(Review.route_id == route_id).all()
+    # all_reviews = db.session.query(Review.climber_id, Review.date, Review.content).filter(Review.route_id == route_id).all()
+
+    all_reviews = db.session.query(Climber.name, Review.date, Review.content).join(Review).filter(Review.route_id == route_id).all()
+
+    return all_reviews
 
 def create_rating(climber, route, stars):
     """Create and return a new rating."""
@@ -62,11 +66,18 @@ def update_rating(rating_id, new_stars):
     rating.stars = new_stars
 
 def get_average_rating_by_route_id(route_id):
-    """Get average of the start ratings by route_id."""
+    """Get average of the star ratings by route_id."""
 
-    average_rating = Rating.query.filter(Rating.route_id == route_id).all().average()
+    average_rating = db.session.query(db.func.avg(Rating.stars)).filter(Rating.route_id == route_id).all()
 
     return average_rating
+
+def total_rating_by_route_id(route_id):
+    """Get total number of ratings by route_id."""
+
+    total_ratings = db.session.query(db.func.count(Rating.stars)).filter(Rating.route_id == route_id).all()
+
+    return total_ratings
 
 if __name__ == '__main__':
     from server import app

@@ -46,10 +46,13 @@ def show_route(route_id):
     """Show details on a particular climbing route."""
 
     route = crud.get_route_by_id(route_id)
-    all_reviews = crud.get_reviews_by_route_id(route_id)
-    average_rating = crud.get_average_rating_by_route_id(route_id)
+    reviews = crud.get_reviews_by_route_id(route_id)
 
-    return render_template('route_details.html', route=route, all_reviews=all_reviews, average_rating=average_rating)
+    average_rating = crud.get_average_rating_by_route_id(route_id)
+    total_ratings = crud.total_rating_by_route_id(route_id)
+
+
+    return render_template('route_details.html', route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings)
 
 @app.route('/climbers', methods=["POST"])
 def register_climber():
