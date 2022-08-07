@@ -13,6 +13,10 @@
   Latitude: {{ route.latitude }} Longitude: {{ route.longitude }}
 </p>
 
+<p>
+  Average Rating for this Route:  {{ average_rating }}
+</p>
+
 {% if session.get('climber_email') %}
 <h2>Rate this climb:</h2>
 <form action="/routes/{{ route.route_id }}/ratings" method="POST">
@@ -43,9 +47,12 @@
   <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
   <button type="submit">Submit Review</button>
 </form>
-
 {% endif %}
 <br> 
 <br>
 <img src="{{ route.picture_path }}">
+
+<h2>Reviews for this Route:</h2>
+{{ all_reviews }}
+
 {% endblock %}

@@ -43,6 +43,11 @@ def create_review(route, climber, date, content):
 
     return review
 
+def get_reviews_by_route_id(route_id):
+    """Get all the reviews by route id."""
+
+    return Review.query.filter(Review.route_id == route_id).all()
+
 def create_rating(climber, route, stars):
     """Create and return a new rating."""
 
@@ -55,6 +60,13 @@ def update_rating(rating_id, new_stars):
 
     rating = Rating.query.get(rating_id)
     rating.stars = new_stars
+
+def get_average_rating_by_route_id(route_id):
+    """Get average of the start ratings by route_id."""
+
+    average_rating = Rating.query.filter(Rating.route_id == route_id).all().average()
+
+    return average_rating
 
 if __name__ == '__main__':
     from server import app
