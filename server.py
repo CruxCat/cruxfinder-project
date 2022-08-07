@@ -30,8 +30,10 @@ def climber_profile(climber_id):
     """Show climber profile page."""
 
     climber = crud.get_climber_by_id(climber_id)
-    print(climber)
-    return render_template('climber_profile.html', climber=climber)
+    climber_reviews = crud.get_reviews_by_climber_id(climber_id)
+    climber_ratings = crud.get_ratings_by_climber_id(climber_id)
+
+    return render_template('climber_profile.html', climber=climber, climber_reviews=climber_reviews, climber_ratings=climber_ratings)
 
 @app.route('/routes')
 def all_routes():

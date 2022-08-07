@@ -79,6 +79,20 @@ def total_rating_by_route_id(route_id):
 
     return total_ratings
 
+def get_reviews_by_climber_id(climber_id):
+    """Get reviews by climber_id."""
+
+    climber_reviews = db.session.query(Route.route).join(Review).filter(Review.climber_id == climber_id).all()
+    
+    return climber_reviews
+
+def get_ratings_by_climber_id(climber_id):
+    """Get ratings by climber_id."""
+
+    climber_ratings = db.session.query(Route.route).join(Rating).filter(Rating.climber_id == climber_id).all()
+
+    return climber_ratings
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
