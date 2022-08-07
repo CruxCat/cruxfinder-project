@@ -1,9 +1,25 @@
 {% extends 'base.html' %}
 
-{% block title %}Climber Profile{% endblock %}
+{% block title %} {{ climber.name }}'s Climber Profile{% endblock %}
 
 {% block body %}
-<h1>testing</h1>
+<h1>Your Profile Page</h1>
+
+<p>
+    Name: {{ climber.name }}
+</p>
+
+<p>
+    Location: {{ climber.location }}
+</p>
+
+<p>
+    Goals: {{ climber.goals }}
+</p>
+
+<p>
+    Email: {{ climber.email }}
+</p>
 
 
 {% endblock %}
