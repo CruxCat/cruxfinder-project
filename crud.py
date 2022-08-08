@@ -70,14 +70,22 @@ def get_average_rating_by_route_id(route_id):
 
     average_rating = db.session.query(db.func.avg(Rating.stars)).filter(Rating.route_id == route_id).all()
 
-    return average_rating
+    stars = average_rating[0][0]
+
+    if stars:
+        avg_stars = round(stars, 2)
+        return avg_stars
+    else:
+        return "No one has submitted a star rating for this route yet."
 
 def total_rating_by_route_id(route_id):
-    """Get total number of ratings by route_id."""
+    """Get total number of star ratings by route_id."""
 
     total_ratings = db.session.query(db.func.count(Rating.stars)).filter(Rating.route_id == route_id).all()
 
-    return total_ratings
+    rate_times = total_ratings[0][0]
+
+    return rate_times
 
 def get_reviews_by_climber_id(climber_id):
     """Get reviews by climber_id."""
