@@ -10,14 +10,14 @@
         "route": "Humpty Dumpty",
         "grade": "5.6",
         "latitude": "-117.41954",
-        "longitude": "-47.64739",
+        "longitude": "47.64739",
         "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     },
     {
         "route": "The Little Engine That Could",
         "grade": "5.7",
         "latitude": "-117.41954",
-        "longitude": "-47.64739",
+        "longitude": "47.64739",
         "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     },
     {
@@ -33,5 +33,27 @@
         "latitude": "-116.963130",
         "longitude": "47.703930",
         "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "Nebula",
+        "grade": "5.8",
+        "latitude": "-117.75275", 
+        "longitude": "47.83965",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "Mid-Life Crisis",
+        "grade": "5.8",
+        "latitude": "-117.725", 
+        "longitude": "47.8356",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+    },
+    {
+        "route": "Invictus",
+        "grade": "5.4",
+        "latitude": "-117.28707", 
+        "longitude": "47.71088",
+        "picture_path": "https://images.unsplash.com/photo-1583623010148-9c00f6b12efe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
     }
+
 ]

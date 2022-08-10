@@ -49,10 +49,8 @@ def show_route(route_id):
 
     route = crud.get_route_by_id(route_id)
     reviews = crud.get_reviews_by_route_id(route_id)
-
     average_rating = crud.get_average_rating_by_route_id(route_id)
     total_ratings = crud.total_rating_by_route_id(route_id)
-
 
     return render_template('route_details.html', route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings)
 
@@ -115,7 +113,7 @@ def create_rating(route_id):
         db.session.add(rating)
         db.session.commit()
 
-        flash(f"You rated this climb {rating_score} out of 5.")
+        flash(f"You rated this climb {rating_score} out of 5 stars.")
 
     return redirect(f"/routes/{route_id}")
 

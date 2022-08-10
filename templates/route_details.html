@@ -4,7 +4,9 @@
 
 {% block body %}
 <h1>{{ route.route }}</h1>
-
+<br>
+<img src="{{ route.picture_path }}">
+<br>
 <p>
   Yosemite Decimal System Grade: {{ route.grade }}
 </p>
@@ -53,12 +55,18 @@
 </form>
 {% endif %}
 <br>
-<img src="{{ route.picture_path }}">
-
 <h2>Reviews for this Route:</h2>
 
-{% for name, date, content in reviews %}
-<p>climber: {{ name }}, date: {{ date }}, review: {{ content }} <p>
-{% endfor %}
+{% if reviews %}
+  {% for name, date, content in reviews %}
+  <div>
+    climber: {{ name }}, date: {{ date }}, review: {{ content }}
+  </div>
+  {% endfor %}
+{% else %}
+  <p>No reviews for this route yet.</p>
+{% endif %}
 
+<br>
+<a href="/routes">Go back to all routes</a>
 {% endblock %}

@@ -46,11 +46,9 @@ def create_review(route, climber, date, content):
 def get_reviews_by_route_id(route_id):
     """Get all the review content for a given route by route id."""
 
-    # all_reviews = db.session.query(Review.climber_id, Review.date, Review.content).filter(Review.route_id == route_id).all()
+    reviews = db.session.query(Climber.name, Review.date, Review.content).join(Review).filter(Review.route_id == route_id).all()
 
-    all_reviews = db.session.query(Climber.name, Review.date, Review.content).join(Review).filter(Review.route_id == route_id).all()
-
-    return all_reviews
+    return reviews
 
 def create_rating(climber, route, stars):
     """Create and return a new rating."""
@@ -58,12 +56,6 @@ def create_rating(climber, route, stars):
     rating = Rating(climber=climber, route=route, stars=stars)
 
     return rating
-
-def update_rating(rating_id, new_stars):
-    """Update a rating given rating_id and the updated stars."""
-
-    rating = Rating.query.get(rating_id)
-    rating.stars = new_stars
 
 def get_average_rating_by_route_id(route_id):
     """Get average of the star ratings by route_id."""
@@ -90,14 +82,14 @@ def total_rating_by_route_id(route_id):
 def get_reviews_by_climber_id(climber_id):
     """Get reviews by climber_id."""
 
-    climber_reviews = db.session.query(Route.route).join(Review).filter(Review.climber_id == climber_id).all()
-    
+    climber_reviews = db.session.query(Route.route).join(Review).filter(Review.climber_id == climber_id).distinct().all()
+
     return climber_reviews
 
 def get_ratings_by_climber_id(climber_id):
     """Get ratings by climber_id."""
 
-    climber_ratings = db.session.query(Route.route).join(Rating).filter(Rating.climber_id == climber_id).all()
+    climber_ratings = db.session.query(Route.route).join(Rating).filter(Rating.climber_id == climber_id).distinct().all()
 
     return climber_ratings
 
