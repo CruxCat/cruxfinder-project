@@ -3,31 +3,31 @@
 // We use a function declaration for initMap because we actually *do* need
 // to rely on value-hoisting in this circumstance.
 function initMap() {
-  const sfBayCoords = {
-    lat: 37.601773,
-    lng: -122.20287,
+  const spokaneCoords = {
+    lat: 47.65887479796297,
+    lng: -117.42540975144257,
   };
 
   const basicMap = new google.maps.Map(document.querySelector('#map'), {
-    center: sfBayCoords,
+    center: spokaneCoords,
     zoom: 11,
   });
 
-  const sfMarker = new google.maps.Marker({
-    position: sfBayCoords,
-    title: 'SF Bay',
+  const spokaneMarker = new google.maps.Marker({
+    position: spokaneCoords,
+    title: 'Spokane',
     map: basicMap,
   });
 
-  sfMarker.addListener('click', () => {
+  spokaneMarker.addListener('click', () => {
     alert('Hi!');
   });
 
-  const sfInfo = new google.maps.InfoWindow({
-    content: '<h1>San Francisco Bay!</h1>',
+  const spokaneInfo = new google.maps.InfoWindow({
+    content: '<h1>Spokane, WA</h1>',
   });
 
-  sfInfo.open(basicMap, sfMarker);
+  spokaneInfo.open(basicMap, spokaneMarker);
 
   const locations = [
     {
