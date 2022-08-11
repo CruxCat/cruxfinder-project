@@ -1,25 +1,37 @@
 {% extends 'base.html' %}
 {% block title %}CruxFinder{% endblock %}
 {% block head %} 
-<script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' />
-
+  <link rel="stylesheet" href="/static/css/map.css"/>
 {% endblock %}
 {% block body %}
   <h1>Welcome to CruxFinder!</h1>
 
-  <h2>Navigation</h2>
-  <ul>
+  <nav>
+  <section>
     <li><a href="/routes">View all routes</a></li>
     <li><a href="/login">Log In</a></li>
-  </ul>
+  </section>
+  </nav>
 
 {% if session.get('climber_email') %}
-<ul>
-  <li>
-<a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a>
-  </li>
-</ul>
+  <ul>
+    <li>
+  <a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a>
+    </li>
+  </ul>
 {% endif %}
+
+<section class="map">
+  <div id="map"></div>
+</section>
+
+<!-- this is our js file -->
+<script src="/static/js/app.js"></script>
+
+<!-- this gets a class from the googlemaps server -->
+<script
+  async 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAw93_j5H16S2pAWmDn8sxDE0hZyAdTaI&callback=initMap">
+</script>
 
 {% endblock %}

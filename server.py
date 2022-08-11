@@ -1,9 +1,9 @@
 """Server for climbing routes reviews app."""
 
 from doctest import debug
-from flask import (Flask, render_template, request, flash, session, redirect)
+from flask import (Flask, render_template, jsonify, request, flash, session, redirect, send_from_directory)
 
-from model import connect_to_db, db
+from model import connect_to_db, db, Route
 import crud
 
 from jinja2 import StrictUndefined
