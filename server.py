@@ -2,7 +2,6 @@
 
 from doctest import debug
 from flask import (Flask, render_template, jsonify, request, flash, session, redirect, send_from_directory)
-
 from model import connect_to_db, db, Route
 import crud
 

@@ -31,24 +31,59 @@ function initMap() {
 
   const locations = [
     {
-      name: 'Hackbright Academy',
+      name: 'A Peaceful Transition',
       coords: {
-        lat: 37.7887459,
-        lng: -122.4115852,
+        lat: 47.57852,
+        lng: -117.28617,
       },
     },
     {
-      name: 'Powell Street Station',
+      name: 'Humpty Dumpty',
       coords: {
-        lat: 37.7844605,
-        lng: -122.4079702,
+        lat: 47.64739,
+        lng: -117.41954,
       },
     },
     {
-      name: 'Montgomery Station',
+      name: 'The Little Engine That Could',
       coords: {
-        lat: 37.7894094,
-        lng: -122.4013037,
+        lat: 47.64739,
+        lng: -117.41954,
+      },
+    },
+    {
+      name: 'Wallflower',
+      coords: {
+        lat: 47.701040,
+        lng: -116.962860,
+      },
+    },
+    {
+      name: 'The Last of the Summer Wine',
+      coords: {
+        lat: 47.703930,
+        lng: -116.963130,
+      },
+    },
+    {
+      name: 'Nebula',
+      coords: {
+        lat: 47.83965,
+        lng: -117.75275,
+      },
+    },
+    {
+      name: 'Mid-Life Crisis',
+      coords: {
+        lat: -117.725,
+        lng: 47.8356,
+      },
+    },
+    {
+      name: 'Invictus',
+      coords: {
+        lat: -117.28707,
+        lng: 47.71088,
       },
     },
   ];
@@ -62,7 +97,7 @@ function initMap() {
         map: basicMap,
         icon: {
           // custom icon
-          url: '/static/img/marker.svg',
+          url: '/static/img/marker.png',
           scaledSize: {
             width: 30,
             height: 30,
