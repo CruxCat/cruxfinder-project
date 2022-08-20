@@ -140,7 +140,30 @@ def create_review(route_id):
 
     return redirect(f"/routes/{route_id}")
 
+@app.route('/api/routes')
+def route_info():
+    """JSON information about routes"""
+
+    routes = [
+        {
+            "id": route.route_id,
+            "routeName": route.route,
+            "grade": route.grade,
+            "latitude": route.latitude,
+            "longitude": route.longitude,
+            "picture": route.picture_path
+        }
+        for route in Route.query.all()
+    ]
+
+    return jsonify(routes)
+
+@app.route("/map/static/<path:resource>")
+def get_resource(resource):
+    return send_from_directory("static", resource)
+
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
+    app.debug = True
     connect_to_db(app)
     app.run(host="0.0.0.0", debug=True) 
