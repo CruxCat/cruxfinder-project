@@ -3,6 +3,10 @@
 {% block title %}{{ route.route }} - Details{% endblock %}
 
 {% block body %}
+<nav>
+  <a href="/routes">Go back to all routes</a>
+</nav>
+
 <h1>{{ route.route }}</h1>
 <br>
 <img src="{{ route.picture_path }}">
@@ -68,5 +72,5 @@
 {% endif %}
 
 <br>
-<a href="/routes">Go back to all routes</a>
+
 {% endblock %}

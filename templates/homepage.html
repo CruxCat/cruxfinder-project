@@ -16,7 +16,10 @@
 {% if session.get('climber_email') %}
   <ul>
     <li>
-  <a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a>
+      <a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a>
+    </li>
+    <li>
+      <a href="/logout">Log out</a>
     </li>
   </ul>
 {% endif %}
@@ -25,7 +28,7 @@
   <div id="map"></div>
 </section>
 
-<script src="/static/js/homepage_map.js"></script>
+<script src="/static/js/map.js"></script>
 <script
   async 
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGLO3CZrkwkRiZzbPBBj-bC6Gyu75EtDE&callback=initMap">

@@ -93,6 +93,13 @@ def login_climber():
 
     return redirect('/')
 
+@app.route('/logout')
+def logout():
+    session.pop('climber_email')
+    session.pop('climber_id')
+    flash(f"You have successfully logged out.")
+    return redirect('/')
+
 @app.route("/routes/<route_id>/ratings", methods=["POST"])
 def create_rating(route_id):
     """Create a new rating for a climbing route."""
@@ -157,10 +164,6 @@ def route_info():
     ]
 
     return jsonify(routes)
-
-@app.route("/map/static/<path:resource>")
-def get_resource(resource):
-    return send_from_directory("static", resource)
 
 if __name__ == "__main__":
     # DebugToolbarExtension(app)
