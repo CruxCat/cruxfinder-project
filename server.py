@@ -36,7 +36,7 @@ def climber_profile(climber_id):
 
 @app.route('/routes')
 def all_routes():
-    """View all routes."""
+    """View all climbing routes."""
 
     routes = crud.get_routes()
 
@@ -44,7 +44,7 @@ def all_routes():
 
 @app.route('/routes/<route_id>')
 def show_route(route_id):
-    """Show details on a particular climbing route."""
+    """Show details on a climbing route."""
 
     route = crud.get_route_by_id(route_id)
     reviews = crud.get_reviews_by_route_id(route_id)
@@ -97,6 +97,8 @@ def login_climber():
 
 @app.route('/logout')
 def logout():
+    """Allow the climber to log out."""
+
     session.pop('climber_email')
     session.pop('climber_id')
     flash(f"You have successfully logged out.")
@@ -150,7 +152,7 @@ def create_review(route_id):
 
 @app.route('/api/routes')
 def route_info():
-    """JSON information about routes"""
+    """JSON information about routes for map"""
 
     routes = [
         {
