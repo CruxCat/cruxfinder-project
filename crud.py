@@ -43,6 +43,13 @@ def create_review(route, climber, date, content):
 
     return review
 
+def check_reviews(route_id, climber_id):
+    """Get all the reviews for a given route_id and climber_id to check if the climber has already written a review for a route."""
+
+    check_reviews = db.session.query(Review.review_id).filter(Review.route_id==route_id, Review.climber_id==climber_id).all()
+
+    return check_reviews
+
 def get_reviews_by_route_id(route_id):
     """Get all the review content for a given route by route id."""
 
@@ -63,7 +70,7 @@ def create_rating(climber, route, stars):
 #     rating.stars = new_score
 
 def check_ratings(route_id, climber_id):
-    """Get all ratings for a given route_id and climber_id"""
+    """Get all ratings for a given route_id and climber_id to check if a climber has already rated a route."""
     check_ratings = db.session.query(Rating.rating_id).filter(Rating.route_id==route_id, Rating.climber_id==climber_id).all()
 
     return check_ratings

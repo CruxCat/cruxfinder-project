@@ -32,7 +32,7 @@
 
 {% if session.get('climber_email') %}
   {% if check_ratings %}
-  You have already rated this climb.
+  You have already rated this climb. Would you like to update your rating?
   {% else %}
   <h2>Rate this climb:</h2>
   <form action="/routes/{{ route.route_id }}/ratings" method="POST">
