@@ -57,6 +57,17 @@ def create_rating(climber, route, stars):
 
     return rating
 
+# def update_rating(rating_id, new_score):
+#     """Update a rating given rating_id and the updated score."""
+#     rating = Rating.query.get(rating_id)
+#     rating.stars = new_score
+
+def check_ratings(route_id, climber_id):
+    """Get all ratings for a given route_id and climber_id"""
+    check_ratings = db.session.query(Rating.rating_id).filter(Rating.route_id==route_id, Rating.climber_id==climber_id).all()
+
+    return check_ratings
+
 def get_average_rating_by_route_id(route_id):
     """Get average of the star ratings by route_id."""
 
@@ -92,6 +103,7 @@ def get_ratings_by_climber_id(climber_id):
     climber_ratings = db.session.query(Route.route).join(Rating).filter(Rating.climber_id == climber_id).distinct().all()
 
     return climber_ratings
+
 
 if __name__ == '__main__':
     from server import app

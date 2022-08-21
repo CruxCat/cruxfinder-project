@@ -27,25 +27,33 @@
   This route has been rated {{ total_ratings }} time(s).
 </p>
 
+{{ session.get('climber_id') }}
+{{ check_ratings }}
+
 {% if session.get('climber_email') %}
-<h2>Rate this climb:</h2>
-<form action="/routes/{{ route.route_id }}/ratings" method="POST">
-  <p>
-    Rating: 
-    <select name="rating">
-      <option value="">Select number of stars</option>
-      {% for num in range(6) %}
-        <option value ="{{ num }}">{{num}}</option>
-      {% endfor %}
-    </select>
-  </p>
-  <p>
-    <button type="submit">Submit Rating</button>
-  </p>
-</form>
+  {% if check_ratings %}
+  You have already rated this climb.
+  {% else %}
+  <h2>Rate this climb:</h2>
+  <form action="/routes/{{ route.route_id }}/ratings" method="POST">
+    <p>
+      Rating: 
+      <select name="rating" required>
+        <option value="">Select number of stars</option>
+        {% for num in range(6) %}
+          <option value ="{{ num }}">{{num}}</option>
+        {% endfor %}
+      </select>
+    </p>
+    <p>
+      <button type="submit">Submit Rating</button>
+    </p>
+  </form>
+  {% endif %}
 {% endif %}
 
 {% if session.get('climber_email') %}
+
 <h2>Review this climb:</h2>
 <form action="/routes/{{ route.route_id }}/reviews" method="POST">
   <label for="date">Date you climbed the route:</label>
@@ -57,8 +65,11 @@
   <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
   <button type="submit">Submit Review</button>
 </form>
+
 {% endif %}
+
 <br>
+
 <h2>Reviews for this Route:</h2>
 
 {% if reviews %}

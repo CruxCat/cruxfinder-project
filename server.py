@@ -1,7 +1,7 @@
 """Server for climbing routes reviews app."""
 
 from doctest import debug
-from flask import (Flask, render_template, jsonify, request, flash, session, redirect, send_from_directory)
+from flask import (Flask, render_template, jsonify, request, flash, session, redirect)
 from model import connect_to_db, db, Route
 import crud
 
@@ -50,8 +50,10 @@ def show_route(route_id):
     reviews = crud.get_reviews_by_route_id(route_id)
     average_rating = crud.get_average_rating_by_route_id(route_id)
     total_ratings = crud.total_rating_by_route_id(route_id)
+    climber = session["climber_id"]
+    check_ratings = crud.check_ratings(route_id, climber)
 
-    return render_template('route_details.html', route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings)
+    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, climber=climber, check_ratings=check_ratings)
 
 @app.route('/climbers', methods=["POST"])
 def register_climber():
@@ -109,8 +111,6 @@ def create_rating(route_id):
 
     if logged_in_email is None:
         flash("You must log in to rate a climbing route.")
-    elif not rating_score:
-        flash("Error: you didn't select a score for your rating.")
     else:
         climber = crud.get_climber_by_email(logged_in_email)
         route = crud.get_route_by_id(route_id)
@@ -123,6 +123,7 @@ def create_rating(route_id):
 
     return redirect(f"/routes/{route_id}")
 
+
 @app.route("/routes/<route_id>/reviews", methods=["POST"])
 def create_review(route_id):
     """Create a new review for the specified route."""
@@ -130,12 +131,12 @@ def create_review(route_id):
     logged_in_email = session.get("climber_email")
     content = request.form.get("review")
     date = request.form.get("date")
-
+    
     if logged_in_email is None:
         flash("You must log in to review a climbing route.")
     elif not date:
         flash("Error: you must enter a date you climbed the route.")
-    else:
+    else: # if logged_in_email exists
         climber = crud.get_climber_by_email(logged_in_email)
         route = crud.get_route_by_id(route_id)
 
