@@ -7,6 +7,7 @@
   <a href="/routes">Go back to all routes</a>
 </nav>
 
+<div>
 <h1>{{ route.route }}</h1>
 <br>
 <img src="{{ route.picture_path }}">
@@ -14,22 +15,17 @@
 <p>
   Yosemite Decimal System Grade: {{ route.grade }}
 </p>
-
 <p>
   Latitude: {{ route.latitude }} Longitude: {{ route.longitude }}
 </p>
-
 <p>
   Average Star Rating:  {{ average_rating }}
 </p>
-
 <p>
   This route has been rated {{ total_ratings }} time(s).
 </p>
-
-{{ session.get('climber_id') }}
-{{ check_ratings }}
-
+</div>
+<div>
 {% if session.get('climber_email') %}
   {% if check_ratings %}
   You have already rated this climb. Would you like to update your rating?
@@ -51,9 +47,13 @@
   </form>
   {% endif %}
 {% endif %}
+</div>
 
+<div>
 {% if session.get('climber_email') %}
-
+  {% if check_reviews %}
+  You have already written a review for this climbing route. Would you like to add an update?
+  {% else %}
 <h2>Review this climb:</h2>
 <form action="/routes/{{ route.route_id }}/reviews" method="POST">
   <label for="date">Date you climbed the route:</label>
@@ -65,11 +65,12 @@
   <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
   <button type="submit">Submit Review</button>
 </form>
-
+  {% endif %}
 {% endif %}
+</div>
 
 <br>
-
+<div>
 <h2>Reviews for this Route:</h2>
 
 {% if reviews %}
@@ -81,7 +82,7 @@
 {% else %}
   <p>No reviews for this route yet.</p>
 {% endif %}
-
+</div>
 <br>
 
 {% endblock %}

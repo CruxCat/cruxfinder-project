@@ -52,8 +52,9 @@ def show_route(route_id):
     total_ratings = crud.total_rating_by_route_id(route_id)
     climber = session["climber_id"]
     check_ratings = crud.check_ratings(route_id, climber)
+    check_reviews = crud.check_reviews(route_id, climber)
 
-    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, climber=climber, check_ratings=check_ratings)
+    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, climber=climber, check_ratings=check_ratings, check_reviews=check_reviews)
 
 @app.route('/climbers', methods=["POST"])
 def register_climber():
