@@ -10,7 +10,7 @@
 <div>
 <h1>{{ route.route }}</h1>
 <br>
-<img src="{{ route.picture_path }}">
+<img src="{{ route.picture_path }}" width="200" height="300" alt="" />
 <br>
 <p>
   Yosemite Decimal System Grade: {{ route.grade }}
@@ -28,7 +28,7 @@
 <div>
 {% if session.get('climber_email') %}
   {% if check_ratings %}
-  You have already rated this climb. Would you like to update your rating?
+  You have already rated this climb. Would you like to update your rating? <button class="edit-climbing-route-rating"> Edit rating </button>
   {% else %}
   <h2>Rate this climb:</h2>
   <form action="/routes/{{ route.route_id }}/ratings" method="POST">
@@ -84,5 +84,7 @@
 {% endif %}
 </div>
 <br>
+
+<script src="/static/js/updateRatings.js"></script>
 
 {% endblock %}

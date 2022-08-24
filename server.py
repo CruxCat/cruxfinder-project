@@ -2,7 +2,7 @@
 
 from doctest import debug
 from flask import (Flask, render_template, jsonify, request, flash, session, redirect)
-from model import connect_to_db, db, Route
+from model import connect_to_db, db, Route, Rating
 import crud
 
 from jinja2 import StrictUndefined
@@ -126,6 +126,16 @@ def create_rating(route_id):
 
     return redirect(f"/routes/{route_id}")
 
+@app.route("/update_rating", methods=["POST"])
+def update_rating():
+
+    route_id = crud.get_route_by_id(route_id)
+    climber_id = session["climber_id"]
+    updated_score = request.json["updated_score"]
+    crud.update_rating(route_id, climber_id, updated_score)
+    db.session.commit()
+
+    return "Success"
 
 @app.route("/routes/<route_id>/reviews", methods=["POST"])
 def create_review(route_id):
