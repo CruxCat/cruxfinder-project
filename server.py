@@ -50,11 +50,16 @@ def show_route(route_id):
     reviews = crud.get_reviews_by_route_id(route_id)
     average_rating = crud.get_average_rating_by_route_id(route_id)
     total_ratings = crud.total_rating_by_route_id(route_id)
-    climber = session["climber_id"]
-    check_ratings = crud.check_ratings(route_id, climber)
-    check_reviews = crud.check_reviews(route_id, climber)
+    if session:
+        climber = session["climber_id"]
+        check_ratings = crud.check_ratings(route_id, climber)
+        check_reviews = crud.check_reviews(route_id, climber)
+    else:
+        climber = None
+        check_ratings = None
+        check_reviews = None
 
-    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, climber=climber, check_ratings=check_ratings, check_reviews=check_reviews)
+    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, check_ratings=check_ratings, check_reviews=check_reviews)
 
 @app.route('/climbers', methods=["POST"])
 def register_climber():
@@ -129,10 +134,9 @@ def create_rating(route_id):
 @app.route("/update_rating", methods=["POST"])
 def update_rating():
 
-    route_id = crud.get_route_by_id(route_id)
-    climber_id = session["climber_id"]
+    rating_id = request.json["rating_id"]
     updated_score = request.json["updated_score"]
-    crud.update_rating(route_id, climber_id, updated_score)
+    crud.update_rating(rating_id, updated_score)
     db.session.commit()
 
     return "Success"

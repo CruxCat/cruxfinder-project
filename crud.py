@@ -64,9 +64,9 @@ def create_rating(climber, route, stars):
 
     return rating
 
-def update_rating(route_id, climber_id, new_score):
+def update_rating(rating_id, new_score):
     """Update a rating given route_id, climber_id and new score."""
-    rating = db.session.query(Rating.rating_id).filter(Rating.route_id == route_id, Rating.climber_id == climber_id)
+    rating = Rating.query.get(rating_id)
     rating.stars = new_score
 
 def check_ratings(route_id, climber_id):
