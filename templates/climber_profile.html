@@ -6,27 +6,37 @@
 <h1>Your Profile Page</h1>
 
 <p>
-    Name: {{ climber.name }}
+    Name: 
+    {{ climber.name }}
 </p>
 
 <p>
-    Location: {{ climber.location }}
+    Location: 
+    {{ climber.location }}
 </p>
 
 <p>
-    Climbing Goals: {{ climber.goals }}
+    Climbing Goals: 
+    {{ climber.goals }}
 </p>
 
 <p>
-    Email: {{ climber.email }}
+    Email: 
+    {{ climber.email }}
 </p>
 
 <p>
-    Routes you've reviewed:  {{ climber_reviews }}
+    Routes you've reviewed:  
+    {% for review in climber_reviews %}
+    <div>{{ review }}</div>
+    {% endfor %}
 </p>
 
 <p>
-    Routes you've rated:  {{ climber_ratings }}
+    Routes you've rated:  
+    {% for rating in climber_ratings %}
+    <div>{{ rating }}</div>
+    {% endfor %}
 </p>
 
 <a href="/routes">Go back to all routes</a>
