@@ -65,13 +65,13 @@ def create_rating(climber, route, stars):
     return rating
 
 def update_rating(rating_id, new_score):
-    """Update a rating given route_id, climber_id and new score."""
+    """Update a rating"""
     rating = Rating.query.get(rating_id)
     rating.stars = new_score
 
 def check_ratings(route_id, climber_id):
     """Get all ratings for a given route_id and climber_id to check if a climber has already rated a route."""
-    check_ratings = db.session.query(Rating.rating_id).filter(Rating.route_id==route_id, Rating.climber_id==climber_id).all()
+    check_ratings = db.session.query(Rating.rating_id, Rating.stars).filter(Rating.route_id==route_id, Rating.climber_id==climber_id).all()
 
     return check_ratings
 

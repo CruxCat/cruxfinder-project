@@ -28,7 +28,10 @@
 <div>
 {% if session.get('climber_email') %}
   {% if check_ratings %}
-  You have already rated this climb. Would you like to update your rating? <button class="edit-climbing-route-rating"> Edit rating </button>
+    {% for rating in check_ratings %}
+      Rating ID:  {{ rating.rating_id }} Star Rating: {{ rating.stars }}
+  You have already rated this climb. Would you like to update your rating? <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
+    {% endfor %}
   {% else %}
   <h2>Rate this climb:</h2>
   <form action="/routes/{{ route.route_id }}/ratings" method="POST">
@@ -52,7 +55,7 @@
 <div>
 {% if session.get('climber_email') %}
   {% if check_reviews %}
-  You have already written a review for this climbing route. Would you like to add an update?
+  You have already written a review for this climbing route. Would you like to add an update? <button class="edit-movie-rating" id={{ rating.rating_id }}> Edit rating </button>
   {% else %}
 <h2>Review this climb:</h2>
 <form action="/routes/{{ route.route_id }}/reviews" method="POST">
