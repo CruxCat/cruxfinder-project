@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ route.route }} - Details{% endblock %}
+{% block title %}
+{{ route.route }} - Details
+{% endblock %}
+
+{% block head %}
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+{% endblock %}
 
 {% block body %}
 <nav>
@@ -27,35 +35,40 @@
 </div>
 <div>
 {% if session.get('climber_email') %}
-  {% if check_ratings %}
-    {% for rating in check_ratings %}
-      Rating ID:  {{ rating.rating_id }} Star Rating: {{ rating.stars }}
-  You have already rated this climb. Would you like to update your rating? <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
-    {% endfor %}
-  {% else %}
-  <h2>Rate this climb:</h2>
-  <form action="/routes/{{ route.route_id }}/ratings" method="POST">
-    <p>
-      Rating: 
-      <select name="rating" required>
-        <option value="">Select number of stars</option>
-        {% for num in range(6) %}
-          <option value ="{{ num }}">{{num}}</option>
+    {% if ratings %}
+        {% for rating in ratings: %}
+          <div>
+              You have already given this climb a {{ rating.stars }} star rating. Would you like to update your rating? 
+              <span id="button-container">
+                <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
+              </span>
+          </div>
         {% endfor %}
-      </select>
-    </p>
-    <p>
-      <button type="submit">Submit Rating</button>
-    </p>
-  </form>
-  {% endif %}
+
+    {% else %}
+      <h2>Rate this climb:</h2>
+      <form action="/routes/{{ route.route_id }}/ratings" method="POST">
+        <p>
+          Rating: 
+          <select name="rating" required>
+            <option value="">Select number of stars</option>
+            {% for num in range(6) %}
+              <option value ="{{ num }}">{{num}}</option>
+            {% endfor %}
+          </select>
+        </p>
+        <p>
+          <button type="submit">Submit Rating</button>
+        </p>
+      </form>
+    {% endif %}
 {% endif %}
 </div>
 
 <div>
 {% if session.get('climber_email') %}
   {% if check_reviews %}
-  You have already written a review for this climbing route. Would you like to add an update? <button class="edit-movie-rating" id={{ rating.rating_id }}> Edit rating </button>
+  You have already written a review for this climbing route. Would you like to add an update?
   {% else %}
 <h2>Review this climb:</h2>
 <form action="/routes/{{ route.route_id }}/reviews" method="POST">
@@ -88,6 +101,6 @@
 </div>
 <br>
 
-<script src="/static/js/updateRatings.js"></script>
+<script type="text/jsx" src="/static/js/updateRatings.jsx"></script>
 
 {% endblock %}

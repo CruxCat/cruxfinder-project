@@ -16,10 +16,9 @@ model.connect_to_db(server.app)
 model.db.create_all()
 
 # load climbing route data from JSON file
-with open('data/climbs.json') as f:
+with open("data/climbs.json") as f:
     climbs_data = json.loads(f.read())
     
-
 routes_in_db = []
 for climb in climbs_data:
     route, grade, latitude, longitude, picture_path = (
@@ -30,6 +29,7 @@ for climb in climbs_data:
         climb["picture_path"],
     )
     db_climb = crud.create_route(route, grade, latitude, longitude, picture_path)
+
     routes_in_db.append(db_climb)
 
 model.db.session.add_all(routes_in_db)

@@ -2,7 +2,7 @@
 
 from doctest import debug
 from flask import (Flask, render_template, jsonify, request, flash, session, redirect)
-from model import connect_to_db, db, Route, Rating
+from model import connect_to_db, db, Route, Rating, Climber
 import crud
 
 from jinja2 import StrictUndefined
@@ -50,16 +50,17 @@ def show_route(route_id):
     reviews = crud.get_reviews_by_route_id(route_id)
     average_rating = crud.get_average_rating_by_route_id(route_id)
     total_ratings = crud.total_rating_by_route_id(route_id)
+ 
     if session:
         climber = session["climber_id"]
-        check_ratings = crud.check_ratings(route_id, climber)
+        ratings = crud.check_ratings(route_id, climber)
         check_reviews = crud.check_reviews(route_id, climber)
     else:
         climber = None
-        check_ratings = None
+        ratings = None
         check_reviews = None
 
-    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, check_ratings=check_ratings, check_reviews=check_reviews)
+    return render_template('route_details.html', route_id=route_id, route=route, reviews=reviews, average_rating=average_rating, total_ratings=total_ratings, ratings=ratings, check_reviews=check_reviews)
 
 @app.route('/climbers', methods=["POST"])
 def register_climber():

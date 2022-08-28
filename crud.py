@@ -64,6 +64,12 @@ def create_rating(climber, route, stars):
 
     return rating
 
+def get_ratings_by_route_id(route_id):
+
+    ratings = Rating.query.filter(Rating.route_id == route_id).all()
+
+    return ratings
+
 def update_rating(rating_id, new_score):
     """Update a rating"""
     rating = Rating.query.get(rating_id)
