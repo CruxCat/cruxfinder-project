@@ -4,12 +4,6 @@
 {{ route.route }} - Details
 {% endblock %}
 
-{% block head %}
-<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
-<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
-<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
-{% endblock %}
-
 {% block body %}
 <nav>
   <a href="/routes">Go back to all routes</a>
@@ -67,9 +61,6 @@
 
 <div>
 {% if session.get('climber_email') %}
-  {% if check_reviews %}
-  You have already written a review for this climbing route. Would you like to add an update?
-  {% else %}
 <h2>Review this climb:</h2>
 <form action="/routes/{{ route.route_id }}/reviews" method="POST">
   <label for="date">Date you climbed the route:</label>
@@ -81,7 +72,6 @@
   <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
   <button type="submit">Submit Review</button>
 </form>
-  {% endif %}
 {% endif %}
 </div>
 
@@ -101,6 +91,10 @@
 </div>
 <br>
 
-<script type="text/jsx" src="/static/js/updateRatings.jsx"></script>
+<!-- javascript file to update rating -->
+<script src="/static/js/updateRatings.js"></script>
+
+<!-- jsx file to update rating using React state -->
+<!-- <script type="text/jsx" src="/static/js/updateRatings.jsx"></script> -->
 
 {% endblock %}

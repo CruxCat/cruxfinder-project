@@ -43,13 +43,6 @@ def create_review(route, climber, date, content):
 
     return review
 
-def check_reviews(route_id, climber_id):
-    """Get all the reviews for a given route_id and climber_id to check if the climber has already written a review for a route."""
-
-    check_reviews = db.session.query(Review.review_id).filter(Review.route_id==route_id, Review.climber_id==climber_id).all()
-
-    return check_reviews
-
 def get_reviews_by_route_id(route_id):
     """Get all the review content for a given route by route id."""
 
@@ -92,7 +85,7 @@ def get_average_rating_by_route_id(route_id):
         avg_stars = round(stars, 2)
         return avg_stars
     else:
-        return "No one has submitted a star rating for this route yet."
+        return "Average star rating is not available for this route yet."
 
 def total_rating_by_route_id(route_id):
     """Get total number of star ratings by route_id."""
