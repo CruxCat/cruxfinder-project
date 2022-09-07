@@ -3,6 +3,15 @@
 {% block title %}
 {{ route.route }} - Details
 {% endblock %}
+{% block head %}
+<!-- React: you can’t write React components without React -->
+<script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+<!-- Babel: used to transpile JSX to JavaScript that the browser can run -->
+<script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+<!-- React Router: this library makes it easier to create a React app with multiple pages and valid links -->
+<script src="https://unpkg.com/react-router-dom@5.2.0/umd/react-router-dom.js"></script>  
+{% endblock head%}
 
 {% block body %}
 <nav>
@@ -21,7 +30,7 @@
   Latitude: {{ route.latitude }} Longitude: {{ route.longitude }}
 </p>
 <p>
-  Average Star Rating:  {{ average_rating }}
+  Average Star Rating:  <span id="avg_rating">{{ average_rating }}</span> 
 </p>
 <p>
   This route has been rated {{ total_ratings }} time(s).
@@ -32,7 +41,7 @@
     {% if ratings %}
         {% for rating in ratings: %}
           <div>
-              You have already given this climb a {{ rating.stars }} star rating. Would you like to update your rating? 
+              You have given this climb a <span id='rating'>{{ rating.stars }} </span> star rating. Would you like to update your rating? 
               <span id="button-container">
                 <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
               </span>
@@ -94,7 +103,7 @@
 <!-- javascript file to update rating -->
 <script src="/static/js/updateRatings.js"></script>
 
-<!-- jsx file to update rating using React state -->
+<!-- import jsx file -->
 <!-- <script type="text/jsx" src="/static/js/updateRatings.jsx"></script> -->
 
 {% endblock %}

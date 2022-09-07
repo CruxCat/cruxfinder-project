@@ -9,7 +9,7 @@ for (const button of editButtons) {
       rating_id: button.id,
     };
 
-    // send a fetch request to the update_rating route
+    // send a fetch/AJAX request to the update_rating route
     fetch('/update_rating', {
       method: 'POST',
       body: JSON.stringify(formInputs),
@@ -18,7 +18,9 @@ for (const button of editButtons) {
       },
     }).then((response) => {
       if (response.ok) {
-        document.querySelector(`span.rating_num_${button.id}`).innerHTML = newScore;
+        // manipulate DOM to reflect updated rating
+        document.querySelector(`#rating`).innerText = newScore;
+        // document.querySelector(`#avg_rating`).innerText = newScore;
       } else {
         alert('Failed to update rating.');
       }
