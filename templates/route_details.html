@@ -41,11 +41,15 @@
     {% if ratings %}
         {% for rating in ratings: %}
           <div>
+            <form action="/routes/{{ route.route_id }}//ratings" method="POST">
+              <input type="hidden" id="route-id" name="routeId" value="{{ route.route_id }}">
               You have given this climb a <span id='rating'>{{ rating.stars }} </span> star rating. Would you like to update your rating? 
               <span id="button-container">
                 <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
               </span>
+            </form>
           </div>
+        
         {% endfor %}
 
     {% else %}

@@ -138,7 +138,7 @@ def update_rating():
     crud.update_rating(rating_id, updated_score)
     db.session.commit()
 
-    return updated_score
+    return updated_score, rating_id
 
 @app.route("/routes/<route_id>/reviews", methods=["POST"])
 def create_review(route_id):
