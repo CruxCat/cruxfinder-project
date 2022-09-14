@@ -22,7 +22,22 @@ function initMap() {
     .then((routes) => {
       for (const route of routes) {
         // define content of the infoWindow
-        const routeInfoContent = `hi
+        const routeInfoContent = `
+        <div class="window-content">
+          <div class="route-thumbnail">
+            <img
+              src="${route.picture}"
+              alt="route picture" width="50" height="50"
+            />
+          </div>
+
+          <ul class="route-info">
+            <li><b>Route Name: </b>${route.routeName}</li>
+            <li><b>YDS Grade: </b>${route.grade}</li>
+            <li><b>Latitude: </b>${route.latitude}</li>
+            <li><b>Longitude: </b>${route.longitude}</li>
+          </ul>
+        </div>
         `;
 
         const routeMarker = new google.maps.Marker({
