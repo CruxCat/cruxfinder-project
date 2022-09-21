@@ -4,9 +4,16 @@
   <link rel="stylesheet" href="/static/css/map.css"/>
 {% endblock %}
 {% block body %}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12">
+
   <h1>CruxFinder</h1>
+  <h2>Plan your next ascent.</h2>
+  <p>Blurb about what CruxFinder does:  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi similique atque nam ullam! Rerum deserunt reiciendis consequatur ipsam eligendi aspernatur esse. Mollitia officia commodi excepturi, numquam veniam in soluta quo?</p>
+
 {% if session.get('climber_email') %}
-  <nav>
+  <nav class="navbar">
     <li><a href="/routes">View all routes</a></li>
     <li><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
     <li><a href="/logout">Log out</a></li>
@@ -22,10 +29,14 @@
   <div id="map"></div>
 </section>
 
+    </div>
+  </div>
+</div>
+
+
 <script src="/static/js/map.js"></script>
 <script
   async 
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGLO3CZrkwkRiZzbPBBj-bC6Gyu75EtDE&callback=initMap">
 </script>
-
 {% endblock %}

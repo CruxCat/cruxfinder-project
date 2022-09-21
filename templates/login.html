@@ -3,13 +3,13 @@
 {% block title %} Climber Login {% endblock %}
 
 {% block body %}
-
+<div class="container-fluid">
 <nav>
   <a href="/">Homepage</a>
   <a href="/routes">Go back to all routes</a>
 </nav>
 
-<h2>Create an Account</h2>
+<h1>Create an Account</h1>
 <form action="/climbers" method="POST">
 
   <p>
@@ -37,7 +37,7 @@
   </p>
 </form>
 
-<h2>Already registered? Log In Here</h2>
+<h1>Already registered? Log In Here</h1>
 <form action="/climber_login" method="POST">
   <p>
     Email <input type="text" name="email">
@@ -51,7 +51,6 @@
     <input type="submit">
   </p>
 </form>
-
-
 <br>
+</div>
 {% endblock %}

@@ -1,18 +1,51 @@
 body {
-  background-color: #A799B7;
-  font-family:  Verdana, Geneva, Tahoma, sans-serif;
-  padding-top:2em;
+  background-color: #CBC5BD;
+  background-image: url('/static/img/kurt-cotoaga-cqbLg3lZEpk-unsplash.jpg');
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  font-family: sans-serif;
   }
 
-  h1 {
-    text-align: center;
-    color: #00171F;
-    font-weight: bold;
-  }
+h1 {
+  text-align: center;
+  color: #483C47;
+  font-weight: bold;
+  /* text-shadow: 2px 2px #9E9C9B; */
+}
 
-  nav {
-    position: fixed;
-    width:  100%;
-    top: 0;
-    right: 0;
-  }
+h2 {
+  text-align: center;
+  color: #9E9C9B;
+  font-weight: bold;
+  /* text-shadow: 2px 2px #9E9C9B; */
+}
+
+nav {
+  display: flex;
+  position: fixed;
+  justify-content: flex-end;
+  width: 40%;
+  top: 0;
+  right: 0;
+}
+
+  /* unvisited link */
+a:link {
+  color: #483C47;
+}
+
+/* visited link */
+a:visited {
+  color: #900020;
+}
+
+/* mouse over link */
+a:hover {
+  color: #E8B4B8;
+}
+
+/* selected link */
+a:active {
+  color: #900020;
+}

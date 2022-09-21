@@ -2,11 +2,11 @@ html, body {
     margin: 0;
     width: 100%;
     height: 100%;
-    background-image: url("static/img/kurt-cotoaga-cqbLg3lZEpk-unsplash.jpg");
   }
   
   .map,
   #map {
+    padding-top: 5em;
     width: 100%;
     height: 80%;
   }
@@ -15,16 +15,17 @@ html, body {
     overflow: hidden;
     display: flex;
     max-width: 300px;
+    border: 1px solid;
   }
   
-  .bear-thumbnail {
+  .route-thumbnail {
     flex: 1 0;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .bear-thumbnail img {
+  .route-thumbnail img {
     width: 100%;
   }
   
