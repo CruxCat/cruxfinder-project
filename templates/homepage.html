@@ -4,26 +4,20 @@
   <link rel="stylesheet" href="/static/css/map.css"/>
 {% endblock %}
 {% block body %}
-  <h1>Welcome to CruxFinder!</h1>
-
-  <nav>
-  <section>
-    <li><a href="/routes">View all routes</a></li>
-    <li><a href="/login">Log In</a></li>
-  
-  
-
+  <h1>CruxFinder</h1>
 {% if session.get('climber_email') %}
-  <ul>
-    <li>
-      <a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a>
-    </li>
-    <li>
-      <a href="/logout">Log out</a>
-    </li>
-  </ul>
+  <nav>
+    <li><a href="/routes">View all routes</a></li>
+    <li><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
+    <li><a href="/logout">Log out</a></li>
+  </nav>
+{% else %}
+  <nav id="nav-bar">
+    <li><a href="/routes">View all routes</a></li>
+    <li><a href="/login">Log In or Create a Profile</a></li>
+  </nav>
 {% endif %}
-</section></nav>
+
 <section class="map">
   <div id="map"></div>
 </section>

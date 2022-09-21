@@ -1,4 +1,3 @@
-// when I use 'strict' the button doesn't work???
 
 editButtons = document.querySelectorAll('.edit-climbing-route-rating');
 

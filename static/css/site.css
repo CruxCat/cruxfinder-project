@@ -1,50 +1,18 @@
-.melon-card {
-    width: 25%;
-    margin: 0.5rem;
+body {
+  background-color: #A799B7;
+  font-family:  Verdana, Geneva, Tahoma, sans-serif;
+  padding-top:2em;
   }
-  
-  .melon-card h5 {
-    font-size: 1rem;
-  }
-  
-  #shopping .filters {
-    min-width: 20%;
-  }
-  
-  .loading-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+  h1 {
     text-align: center;
-    flex-direction: column;
-    margin-top: 300px;
+    color: #00171F;
+    font-weight: bold;
   }
-  
-  .loading-box img {
-    display: block;
-    max-height: 100px;
-    margin: auto;
-    animation: pulse 1s infinite;
+
+  nav {
+    position: fixed;
+    width:  100%;
+    top: 0;
+    right: 0;
   }
-  
-  .loading-box div {
-    font-size: 20px;
-    font-family: cursive;
-  }
-  
-  @keyframes pulse {
-    from {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(0.6);
-    }
-    to {
-      transform: scale(1);
-    }
-  }
-  
-  .card-img-top {
-    height: 250px;
-  }
-  

@@ -47,8 +47,8 @@ function initMap() {
           },
           title: `Route Name: ${route.routeName}`,
           icon: {
-            url: '/static/img/marker.png',
-            scaledSize: new google.maps.Size(30, 30),
+            url: '/static/img/geo-alt-fill.svg',
+            scaledSize: new google.maps.Size(20, 20),
           },
           map,
         });
