@@ -1,42 +1,52 @@
 {% extends 'base.html' %}
+
 {% block title %}CruxFinder{% endblock %}
-{% block head %} 
-  <link rel="stylesheet" href="/static/css/map.css"/>
-{% endblock %}
+
+{% block head %}{% endblock %}
+
 {% block body %}
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
 
-  <h1>CruxFinder</h1>
-  <h2>Plan your next ascent.</h2>
-  <p>Blurb about what CruxFinder does:  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi similique atque nam ullam! Rerum deserunt reiciendis consequatur ipsam eligendi aspernatur esse. Mollitia officia commodi excepturi, numquam veniam in soluta quo?</p>
+<main>
+  <div class="opaque-background">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
 
-{% if session.get('climber_email') %}
-  <nav class="navbar">
-    <li><a href="/routes">View all routes</a></li>
-    <li><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
-    <li><a href="/logout">Log out</a></li>
-  </nav>
-{% else %}
-  <nav id="nav-bar">
-    <li><a href="/routes">View all routes</a></li>
-    <li><a href="/login">Log In or Create a Profile</a></li>
-  </nav>
-{% endif %}
+          <div class="wrapper-header">
+              <header>
+                {% if session.get('climber_email') %}
+                  <nav>
+                    <ul class="nav-ul">
+                      <li class="nav-li"><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
+                      <li class="nav-li"><a href="/logout">Log out</a></li>
+                    </ul>
+                  </nav>
+                {% else %}
+                  <nav>
+                    <ul class="nav-ul">
+                      <li class="nav-li"><a href="/login">Log In or Create a Profile</a>
+                      </li>
+                    </ul>
+                  </nav>
+                {% endif %}            
+              </header>
+            </div>
 
-<section class="map">
-  <div id="map"></div>
-</section>
+          <div class="cta-block">
+            <h1>CruxFinder</h1>
+            <h2>Plan your next ascent.</h2>
+            <p class="description">
+              Blurb about what CruxFinder does:  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi similique atque nam ullam! Rerum deserunt reiciendis consequatur ipsam eligendi aspernatur esse. Mollitia officia commodi excepturi, numquam veniam in soluta quo?
+            </p>
+            <button class="cta-button"><a href="/routes">View all routes</a>
+            </button>
 
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
-
-<script src="/static/js/map.js"></script>
-<script
-  async 
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGLO3CZrkwkRiZzbPBBj-bC6Gyu75EtDE&callback=initMap">
-</script>
+</main>
 {% endblock %}

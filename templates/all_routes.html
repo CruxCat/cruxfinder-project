@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block title %}All Routes{% endblock %}
-
+{% block head %}  <link rel="stylesheet" href="/static/css/map.css"/>
+{% endblock %}
 {% block body %}
 <nav><a href="/">Home</a></nav>
 
@@ -11,5 +12,15 @@
   </li>
 {% endfor %}
 </ul>
+
+<section class="map">
+  <div id="map"></div>
+</section>
+
+<script src="/static/js/map.js"></script>
+<script
+  async 
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGLO3CZrkwkRiZzbPBBj-bC6Gyu75EtDE&callback=initMap">
+</script>
 
 {% endblock %}
