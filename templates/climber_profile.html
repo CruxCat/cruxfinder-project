@@ -25,37 +25,37 @@
                     </div>
 
                     <div class="background-container">
-                        <h1>Your Profile Page</h1>
+                        <h1>Climbing Profile</h1>
 
                         <p>
-                            Name: 
+                            <h2>Name:</h2>
                             {{ climber.name }}
                         </p>
 
                         <p>
-                            Location: 
+                            <h2>Location:</h2> 
                             {{ climber.location }}
                         </p>
 
                         <p>
-                            Climbing Goals: 
+                            <h2>Climbing Goals:</h2>
                             {{ climber.goals }}
                         </p>
 
                         <p>
-                            Email: 
+                            <h2>Email:</h2>
                             {{ climber.email }}
                         </p>
 
                         <p>
-                            Routes you've reviewed:  
+                            <h2>Routes you've reviewed:</h2>  
                             {% for review in climber_reviews %}
                             <div>{{ review }}</div>
                             {% endfor %}
                         </p>
 
                         <p>
-                            Routes you've rated:  
+                            <h2>Routes you've rated:</h2>
                             {% for rating in climber_ratings %}
                             <div>{{ rating }}</div>
                             {% endfor %}

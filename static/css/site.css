@@ -11,14 +11,12 @@ h1 {
   text-align: center;
   color: #383038;
   font-weight: bold;
-  /* text-shadow: 2px 2px #9E9C9B; */
 }
 
 h2 {
   text-align: center;
-  color: #9E9C9B;
+  color: #383038;
   font-weight: bold;
-  /* text-shadow: 2px 2px #9E9C9B; */
 }
 
 nav {
@@ -35,35 +33,49 @@ nav {
 }
 
 button.cta-button {
-  background-color: hsl(0, 6%, 82%);
+  background-color: #e0dcd4;
   font-size: 18px;
   border-radius: 4em;
   border: 0;
   border-bottom: #373232 solid 2px;
   padding: 15px;
-  color: white;
+}
+
+/* shadow effect when hovering over button */
+button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
 .background-container {
   background-color: #c7c3be;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  opacity: 0.85;
 }
 
   /* unvisited link */
 a:link {
+  text-decoration: none;
   color: #483C47;
 }
 
 /* visited link */
 a:visited {
+  text-decoration: none;
   color: #900020;
 }
 
 /* mouse over link */
 a:hover {
+  text-decoration: none;
   color: #383038;
 }
 
 /* selected link */
 a:active {
+  text-decoration: none;
   color: #900020;
 }

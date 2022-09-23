@@ -39,6 +39,7 @@
 
           <div class="cta-block">
             <div class="background-container">
+              
             <div class="route-info-container">
             <h1>{{ route.route }}</h1>
             <br>
@@ -58,7 +59,7 @@
             </p>
             </div>
 
-            <div class="logged-in-rating">
+            <div class="edit-rating-container">
             {% if session.get('climber_email') %}
                 {% if ratings %}
                     {% for rating in ratings: %}
@@ -69,7 +70,9 @@
                           </span>
                       </div>
                     {% endfor %}
+            </div>
 
+            <div class="new-rating-container">
                 {% else %}
                   <h2>Rate this climb:</h2>
                   <form action="/routes/{{ route.route_id }}/ratings" method="POST">
@@ -90,7 +93,7 @@
             {% endif %}
             </div>
 
-            <div class="logged-in-review">
+            <div class="logged-in-review-container">
             {% if session.get('climber_email') %}
             <h2>Review this climb:</h2>
             <form action="/routes/{{ route.route_id }}/reviews" method="POST">
@@ -106,12 +109,12 @@
             {% endif %}
             </div>
 
-            <div class="reviews">
+            <div class="reviews-container">
             <h2>Reviews for this Route:</h2>
 
             {% if reviews %}
               {% for name, date, content in reviews %}
-              <div class="review">
+              <div class="review-container">
                 climber: {{ name }}, date: {{ date }}, review: {{ content }}
               </div>
               {% endfor %}
