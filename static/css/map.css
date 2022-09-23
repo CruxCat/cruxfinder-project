@@ -6,6 +6,7 @@ html, body {
   
   .map,
   #map {
+    display: flex;
     padding-top: 5em;
     width: 100%;
     height: 80%;
@@ -27,6 +28,7 @@ html, body {
   
   .route-thumbnail img {
     width: 100%;
+    height: fit-content;
   }
   
   .window-content ul {

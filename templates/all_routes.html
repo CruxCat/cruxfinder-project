@@ -3,15 +3,53 @@
 {% block head %}  <link rel="stylesheet" href="/static/css/map.css"/>
 {% endblock %}
 {% block body %}
-<nav><a href="/">Home</a></nav>
 
-<ul>
-{% for route in routes %}
-  <li>
-    <a href="/routes/{{ route.route_id }}">{{ route.route }}</a> 
-  </li>
-{% endfor %}
-</ul>
+<main>
+  <div class="opaque-background">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+
+          <div class="wrapper-header">
+            <header>
+              {% if session.get('climber_email') %}
+                <nav>
+                  <ul class="list-unstyled">
+                    <li class="nav-li"><a href="/">Home</a></li>
+                    <li class="nav-li"><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
+                    <li class="nav-li"><a href="/logout">Log out</a></li>
+                  </ul>
+                </nav>
+              {% else %}
+                <nav>
+                  <ul class="list-unstyled">
+                    <li class="nav-li"><a href="/">Home</a></li>
+                    <li class="nav-li"><a href="/login">Register/Login</a>
+                    </li>
+                  </ul>
+                </nav>
+              {% endif %}            
+            </header>
+          </div>
+
+          <div class="cta-block">
+            <h1>Spokane Moderate Routes</h1>
+            <ul class="list-unstyled">
+            {% for route in routes %}
+              <li>
+                <a href="/routes/{{ route.route_id }}">{{ route.route }}</a> 
+              </li>
+            {% endfor %}
+            </ul>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
 
 <section class="map">
   <div id="map"></div>

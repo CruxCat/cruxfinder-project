@@ -7,92 +7,133 @@
 {% endblock head%}
 
 {% block body %}
-<nav>
-  <a href="/routes">Go back to all routes</a>
-</nav>
 
-<div>
-<h1>{{ route.route }}</h1>
-<br>
-<img src="{{ route.picture_path }}" alt="mountain" />
-<br>
-<p>
-  Yosemite Decimal System Grade: {{ route.grade }}
-</p>
-<p>
-  Latitude: {{ route.latitude }} Longitude: {{ route.longitude }}
-</p>
-<p>
-  Average Star Rating:  <span id="avg_rating">{{ average_rating }}</span> 
-</p>
-<p>
-  This route has been rated {{ total_ratings }} time(s).
-</p>
-</div>
+<main>
+  <div class="opaque-background">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
 
-<div>
-{% if session.get('climber_email') %}
-    {% if ratings %}
-        {% for rating in ratings: %}
-          <div>
-              You have given this climb a <span id='rating'>{{ rating.stars }} </span> star rating. Would you like to update your rating? 
-              <span id="button-container">
-                <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
-              </span>
+          <div class="wrapper-header">
+            <header>
+              {% if session.get('climber_email') %}
+                <nav>
+                  <ul class="list-unstyled">
+                    <li class="nav-li"><a href="/">Home</a></li>
+                    <li class="nav-li"><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
+                    <li class="nav-li"><a href="/logout">Log out</a></li>
+                  </ul>
+                </nav>
+              {% else %}
+                <nav>
+                  <ul class="list-unstyled">
+                    <li class="nav-li"><a href="/">Home</a></li>
+                    <li class="nav-li"><a href="/login">Register/Login</a>
+                    </li>
+                  </ul>
+                </nav>
+              {% endif %}            
+            </header>
           </div>
-        {% endfor %}
 
-    {% else %}
-      <h2>Rate this climb:</h2>
-      <form action="/routes/{{ route.route_id }}/ratings" method="POST">
-        <p>
-          Rating: 
-          <select name="rating" required>
-            <option value="">Select number of stars</option>
-            {% for num in range(6) %}
-              <option value ="{{ num }}">{{num}}</option>
-            {% endfor %}
-          </select>
-        </p>
-        <p>
-          <button type="submit">Submit Rating</button>
-        </p>
-      </form>
-    {% endif %}
-{% endif %}
-</div>
 
-<div>
-{% if session.get('climber_email') %}
-<h2>Review this climb:</h2>
-<form action="/routes/{{ route.route_id }}/reviews" method="POST">
-  <label for="date">Date you climbed the route:</label>
-  <br>
-  <input type="date" id="date" name="date"> 
-  <br>
-  <label for="review">Tell us how your climb went:</label>
-  <br>
-  <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
-  <button type="submit">Submit Review</button>
-</form>
-{% endif %}
-</div>
+          <div class="cta-block">
+            <div class="background-container">
+            <div class="route-info-container">
+            <h1>{{ route.route }}</h1>
+            <br>
+            <img src="{{ route.picture_path }}" alt="mountain" width=200px height=200px/>
+            <br>
+            <p>
+              Yosemite Decimal System Grade: {{ route.grade }}
+            </p>
+            <p>
+              Latitude: {{ route.latitude }} Longitude: {{ route.longitude }}
+            </p>
+            <p>
+              Average Star Rating:  <span id="avg_rating">{{ average_rating }}</span> 
+            </p>
+            <p>
+              This route has been rated {{ total_ratings }} time(s).
+            </p>
+            </div>
 
-<br>
-<div>
-<h2>Reviews for this Route:</h2>
+            <div class="logged-in-rating">
+            {% if session.get('climber_email') %}
+                {% if ratings %}
+                    {% for rating in ratings: %}
+                      <div>
+                          You have given this climb a <span id='rating'>{{ rating.stars }} </span> star rating. Would you like to update your rating? 
+                          <span id="button-container">
+                            <button class="edit-climbing-route-rating" id={{ rating.rating_id }}> Edit rating </button>
+                          </span>
+                      </div>
+                    {% endfor %}
 
-{% if reviews %}
-  {% for name, date, content in reviews %}
-  <div>
-    climber: {{ name }}, date: {{ date }}, review: {{ content }}
+                {% else %}
+                  <h2>Rate this climb:</h2>
+                  <form action="/routes/{{ route.route_id }}/ratings" method="POST">
+                    <p>
+                      Rating: 
+                      <select name="rating" required>
+                        <option value="">Select number of stars</option>
+                        {% for num in range(6) %}
+                          <option value ="{{ num }}">{{num}}</option>
+                        {% endfor %}
+                      </select>
+                    </p>
+                    <p>
+                      <button type="submit">Submit Rating</button>
+                    </p>
+                  </form>
+                {% endif %}
+            {% endif %}
+            </div>
+
+            <div class="logged-in-review">
+            {% if session.get('climber_email') %}
+            <h2>Review this climb:</h2>
+            <form action="/routes/{{ route.route_id }}/reviews" method="POST">
+              <label for="date">Date you climbed the route:</label>
+              <br>
+              <input type="date" id="date" name="date"> 
+              <br>
+              <label for="review">Tell us how your climb went:</label>
+              <br>
+              <textarea id="review" name="review" required="required" rows="4" cols="50"></textarea><br><br>
+              <button type="submit">Submit Review</button>
+            </form>
+            {% endif %}
+            </div>
+
+            <div class="reviews">
+            <h2>Reviews for this Route:</h2>
+
+            {% if reviews %}
+              {% for name, date, content in reviews %}
+              <div class="review">
+                climber: {{ name }}, date: {{ date }}, review: {{ content }}
+              </div>
+              {% endfor %}
+            {% else %}
+              <p>There are no reviews for this route yet.</p>
+            {% endif %}
+
+            </div>
+
+          </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  {% endfor %}
-{% else %}
-  <p>No reviews for this route yet.</p>
-{% endif %}
-</div>
-<br>
+
+</main>
+
+
+
 
 <!-- javascript file to update rating -->
 <script src="/static/js/updateRatings.js"></script>

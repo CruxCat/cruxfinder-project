@@ -3,54 +3,91 @@
 {% block title %} Climber Login {% endblock %}
 
 {% block body %}
-<div class="container-fluid">
-<nav>
-  <a href="/">Homepage</a>
-  <a href="/routes">Go back to all routes</a>
-</nav>
 
-<h1>Create an Account</h1>
-<form action="/climbers" method="POST">
+<main>
+  <div class="opaque-background">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
 
-  <p>
-    Name <input type="text" required="required" name="name">
-  </p>
+          <div class="wrapper-header">
+            <header>
+              <nav>
+                <ul class="list-unstyled">
+                  <li class="nav-li">
+                    <a href="/">Home</a>
+                  </li>
+                </ul>
+              </nav>
+            </header>
+          </div>
 
-  <p>
-    Location <input type="text" name="location">
-  </p>
+          <div class="cta-block">
+            <div class="background-container">
 
-  <p>
-    Climbing Goals <input type="text" name="goals">
-  </p>
-  
-  <p>
-    Email <input type="text" required="required" name="email">
-  </p>
+            <h1>Create an Account</h1>
+            <form action="/climbers" method="POST">
+            
+              <p>
+                Name <input type="text" required="required" name="name">
+              </p>
+            
+              <p>
+                Location <input type="text" name="location">
+              </p>
+            
+              <p>
+                Climbing Goals <input type="text" name="goals">
+              </p>
+              
+              <p>
+                Email <input type="text" required="required" name="email">
+              </p>
+            
+              <p>
+                Password <input type="password" required="required" name="password">
+              </p>
+            
+              <p>
+                <input type="submit">
+              </p>
+            </form>
+            
+            <h1>Already registered? Log In Here</h1>
+            
+            <form action="/climber_login" method="POST">
+              <p>
+                Email <input type="text" name="email">
+              </p>
+            
+              <p>
+                Password <input type="password" name="password">
+              </p>
+            
+              <p>
+                <input type="submit">
+              </p>
+            </form>
+            
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <p>
-    Password <input type="password" required="required" name="password">
-  </p>
+</main>
 
-  <p>
-    <input type="submit">
-  </p>
-</form>
 
-<h1>Already registered? Log In Here</h1>
-<form action="/climber_login" method="POST">
-  <p>
-    Email <input type="text" name="email">
-  </p>
 
-  <p>
-    Password <input type="password" name="password">
-  </p>
 
-  <p>
-    <input type="submit">
-  </p>
-</form>
-<br>
-</div>
+
+
+
+
+
+
+
+
 {% endblock %}

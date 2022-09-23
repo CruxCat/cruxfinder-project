@@ -1,5 +1,5 @@
 body {
-  background-color: #CBC5BD;
+  background-color: #c7c3be;
   background-image: url('/static/img/kurt-cotoaga-cqbLg3lZEpk-unsplash.jpg');
   background-size: cover;
   background-position: 0px 25rem;
@@ -31,9 +31,10 @@ nav {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
 }
 
-button {
+button.cta-button {
   background-color: hsl(0, 6%, 82%);
   font-size: 18px;
   border-radius: 4em;
@@ -41,6 +42,10 @@ button {
   border-bottom: #373232 solid 2px;
   padding: 15px;
   color: white;
+}
+
+.background-container {
+  background-color: #c7c3be;
 }
 
   /* unvisited link */

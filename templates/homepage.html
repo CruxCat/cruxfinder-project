@@ -16,15 +16,15 @@
               <header>
                 {% if session.get('climber_email') %}
                   <nav>
-                    <ul class="nav-ul">
+                    <ul class="list-unstyled">
                       <li class="nav-li"><a href="/climber_profile/{{ session['climber_id'] }}">Go to your profile</a></li>
                       <li class="nav-li"><a href="/logout">Log out</a></li>
                     </ul>
                   </nav>
                 {% else %}
                   <nav>
-                    <ul class="nav-ul">
-                      <li class="nav-li"><a href="/login">Log In or Create a Profile</a>
+                    <ul class="list-unstyled">
+                      <li class="nav-li"><a href="/login">Register/Login</a>
                       </li>
                     </ul>
                   </nav>
@@ -39,9 +39,7 @@
               Blurb about what CruxFinder does:  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quasi similique atque nam ullam! Rerum deserunt reiciendis consequatur ipsam eligendi aspernatur esse. Mollitia officia commodi excepturi, numquam veniam in soluta quo?
             </p>
             <button class="cta-button"><a href="/routes">View all routes</a>
-            </button>
-
-          </div>
+            </button>          
           </div>
         </div>
       </div>

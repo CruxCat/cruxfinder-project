@@ -3,43 +3,69 @@
 {% block title %} {{ climber.name }}'s Climber Profile{% endblock %}
 
 {% block body %}
-<h1>Your Profile Page</h1>
 
-<p>
-    Name: 
-    {{ climber.name }}
-</p>
 
-<p>
-    Location: 
-    {{ climber.location }}
-</p>
+<main>
+    <div class="opaque-background">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+  
+                    <div class="wrapper-header">
+                        <header>
+                            <nav>
+                                <ul class="list-unstyled">
+                                <li class="nav-li"><a href="/">Home</a></li>
+                                <li class="nav-li"><a href="/logout">Log out</a></li>
+                                <li class="nav-li"><a href="/routes">View Routes</a></li>
+                                </li>
+                                </ul>
+                            </nav>       
+                        </header>
+                    </div>
 
-<p>
-    Climbing Goals: 
-    {{ climber.goals }}
-</p>
+                    <div class="background-container">
+                        <h1>Your Profile Page</h1>
 
-<p>
-    Email: 
-    {{ climber.email }}
-</p>
+                        <p>
+                            Name: 
+                            {{ climber.name }}
+                        </p>
 
-<p>
-    Routes you've reviewed:  
-    {% for review in climber_reviews %}
-    <div>{{ review }}</div>
-    {% endfor %}
-</p>
+                        <p>
+                            Location: 
+                            {{ climber.location }}
+                        </p>
 
-<p>
-    Routes you've rated:  
-    {% for rating in climber_ratings %}
-    <div>{{ rating }}</div>
-    {% endfor %}
-</p>
+                        <p>
+                            Climbing Goals: 
+                            {{ climber.goals }}
+                        </p>
 
-<a href="/routes">Go back to all routes</a>
+                        <p>
+                            Email: 
+                            {{ climber.email }}
+                        </p>
 
+                        <p>
+                            Routes you've reviewed:  
+                            {% for review in climber_reviews %}
+                            <div>{{ review }}</div>
+                            {% endfor %}
+                        </p>
+
+                        <p>
+                            Routes you've rated:  
+                            {% for rating in climber_ratings %}
+                            <div>{{ rating }}</div>
+                            {% endfor %}
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 
 {% endblock %}
